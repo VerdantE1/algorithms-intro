@@ -1,7 +1,7 @@
 ﻿# 循环不变式:每次循环后A[0..j]是排序好的
 
 def insert_sort(A):
-    for i in range(i,len(A)):
+    for i in range(0,len(A)):
         key = A[i]
         # 遍历子数组
         j = i-1
@@ -16,7 +16,7 @@ def insert_sort_recursive(A, n=None):
     if n is None:
         n = len(A)
     if n <= 1:
-        return A
+        return 
     insert_sort_recursive(A,n-1) # 排序A[0,n-1]
     i = n - 1
     key= A[i]
@@ -25,10 +25,10 @@ def insert_sort_recursive(A, n=None):
         A[j+1] = A[j]
         j -= 1
     A[j+1] = key # 插入到正确位置 
-    return A
+
 
 
 if __name__ == '__main__':
     W = [5, 2, 9, 1, 5, 6]
-    insert_sort(W)
+    insert_sort_recursive(W)
     print(W)  # [1, 2, 5, 5, 6, 9])

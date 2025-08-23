@@ -14,12 +14,12 @@ def binary_search_recursive(A,l,r,key):
 def binary_search(A,l,r,key):
     while l<=r:
         mid = (l+r) //2
-    if A[mid] == key:
-        return mid
-    elif A[mid] > key:
-        r = mid - 1
-    else:
-        l = mid + 1
+        if A[mid] == key:
+            return mid
+        elif A[mid] > key:
+            r = mid - 1
+        else:
+            l = mid + 1
 
 if __name__ == "__main__":
     A = [1,2,3,4,5,6,7,8,9]
