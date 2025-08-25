@@ -98,6 +98,8 @@ print(max_sub_array_sum_kadane(arr))  # 6
     - 暴力：O(n^2)
     - 分治：O(n log n)
     - Kadane：O(n)
+  - 逆序对数量
+    - 分治: O(n log n)
 
 ## 常见问题
 
