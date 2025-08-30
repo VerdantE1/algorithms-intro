@@ -59,6 +59,37 @@ def fuzzy_interval_sorting(A,l,r):
     fuzzy_interval_sorting(A,i+2,r)
 
 
+
+def fuzzy_interval_sorting_with_overlapping(A,l,r):
+    if (l>=r):
+        return 
+    x = randint(l,r)
+    A[x],A[r] = A[r],A[x]
+    pivot = A[r]
+
+    i = l-1 
+    k = l-1 
+    for j in range(l,r):
+        if (A[j][0] > pivot[1]):   # right
+            continue
+        elif A[j][1] < pivot[0]:     # left
+            i += 1 
+            k += 1
+            A[k],A[j] = A[j],A[k]
+            A[i],A[k] = A[k],A[i]
+
+        elif A[j][0] > A[r][1]:    # middle
+            k +=1
+            A[k],A[j] = A[j],A[k]
+
+    A[k+1],A[r] = A[r],A[k+1]
+
+
+    # 区间模糊比较关系是具有传递性的,所以可以不对middle排序
+    fuzzy_interval_sorting(A,l,i)
+    fuzzy_interval_sorting(A,k+2,r)
+
+
 if __name__ == "__main__":
     A = [3,6,8,10,1,2,1]
     quick_sort(A,0,len(A)-1)
@@ -70,4 +101,8 @@ if __name__ == "__main__":
 
     C = [[1,4],[2,5],[6,8],[9,9],[3,6]]
     fuzzy_interval_sorting(C, 0, len(C) - 1)
+    print(C)
+
+    C = [[1,4],[2,5],[6,8],[9,9],[3,6]]
+    fuzzy_interval_sorting_with_overlapping(C, 0, len(C) - 1)
     print(C)
